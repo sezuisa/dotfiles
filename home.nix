@@ -3,8 +3,8 @@
 let
   # to get the hash when adding a new wallpaper, just use 'sha256="";', do a rebuild an use the hash from the error message
   wallpaper = builtins.fetchurl {
-    url = "https://image.tmdb.org/t/p/original/xtOOvjHZTKyXCyjlzT7bQhzoff4.jpg";
-    sha256 = "0nz7b6d6b1hsa20w808g7lj7bxdqzglmfxza2jd5hs0digwxdp1w";
+    url = "https://raw.githubusercontent.com/sezuisa/dotfiles/master/wallpapers/wallpaper-enterprise.jpg";
+    sha256 = "1djkzzdydimnznbi82cagzd31xwmhakhqbkvh0vykccyq2y2h9fp";
   };
 in
 
