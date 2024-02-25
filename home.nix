@@ -1,12 +1,21 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }: 
+
+let
+    # to get the hash when adding a new wallpaper, just use 'sha256="";', do a rebuild an use the hash from the error message
+   wallpaper = builtins.fetchurl {
+            url = "https://image.tmdb.org/t/p/original/xtOOvjHZTKyXCyjlzT7bQhzoff4.jpg";
+            sha256 = "0nz7b6d6b1hsa20w808g7lj7bxdqzglmfxza2jd5hs0digwxdp1w";
+          };
+in
+
+{
     home.packages = with pkgs; [ 
-      firefox
-      spotify
       signal-desktop
       vscode
-      #vscodium
       yubioath-flutter
       git
+      firefox
+      opera
     ];
 
     home.username = "sez";
@@ -23,11 +32,18 @@
       userEmail = "sarah.haegele01@gmail.com";
     };
 
-    home.stateVersion = "23.11";
+      dconf.settings = {
+        "org/gnome/desktop/background" = {
+        color-shading-type = "solid";
+        picture-options = "zoom";
+        picture-uri = "file://${wallpaper}";
+        picture-uri-dark = "file://${wallpaper}";
+        primary-color = "#3366ff";
+        secondary-color = "#000000";
+      };
+    };
+    
 
-    # flakes
-    #nix = {
-    #  package = pkgs.nix;
-    #  settings.experimental-features = [ "nix-command" "flakes" ];
-    #};
+
+    home.stateVersion = "23.11";
   }

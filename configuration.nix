@@ -3,12 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-let
-   wallpaper = builtins.fetchurl {
-            url = "https://image.tmdb.org/t/p/original/xtOOvjHZTKyXCyjlzT7bQhzoff4.jpg";
-            sha256 = "0nz7b6d6b1hsa20w808g7lj7bxdqzglmfxza2jd5hs0digwxdp1w";
-          };
-in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -28,21 +22,6 @@ in
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  # programs.dconf = {
-  #   enable = true;
-  #     settings = {
-  #       "org/gnome/desktop/background" = {
-  #       color-shading-type = "solid";
-  #       picture-options = "zoom";
-  #       picture-uri = "file://${wallpaper}";
-  #       picture-uri-dark = "file://${wallpaper}";
-  #       primary-color = "#3366ff";
-  #       secondary-color = "#000000";
-  #     };
-  #   };
-    
-  # };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -124,7 +103,6 @@ in
     gimp
     neovim
     arduino
-    opera
     
   ];
 
