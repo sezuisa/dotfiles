@@ -15,33 +15,34 @@
   };
 
   outputs = { self, nixpkgs, home-manager, treefmt-nix, ... }:
-  let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
         inherit system;
         config = { allowUnfree = true; };
-    };
-    lib = nixpkgs.lib;
+      };
+      lib = nixpkgs.lib;
 
-    treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
-  in {
-    formatter.${system} = treefmtEval.config.build.wrapper;
-    checks.${system}.formatter = treefmtEval.config.build.check self;
+      treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+    in
+    {
+      formatter.${system} = treefmtEval.config.build.wrapper;
+      checks.${system}.formatter = treefmtEval.config.build.check self;
 
-    nixosConfigurations = {
-    irrenhost = lib.nixosSystem {
-        inherit system pkgs;
-        modules = [
-          ./configuration.nix
-	        ./hardware-configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            #home-manager.useUserPackages = true;
-            home-manager.users.sez = import ./home.nix;
-          }
-        ];
+      nixosConfigurations = {
+        irrenhost = lib.nixosSystem {
+          inherit system pkgs;
+          modules = [
+            ./configuration.nix
+            ./hardware-configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              #home-manager.useUserPackages = true;
+              home-manager.users.sez = import ./home.nix;
+            }
+          ];
+        };
       };
     };
-  };
 }

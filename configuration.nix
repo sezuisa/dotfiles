@@ -5,7 +5,8 @@
 { config, pkgs, ... }:
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -86,7 +87,7 @@
   users.users.sez = {
     isNormalUser = true;
     description = "Sarah Hägele";
-    extraGroups = [ "networkmanager" "wheel" "dialout"];
+    extraGroups = [ "networkmanager" "wheel" "dialout" ];
     packages = with pkgs; [
       firefox
     ];
@@ -103,7 +104,7 @@
     gimp
     neovim
     arduino
-    
+
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
