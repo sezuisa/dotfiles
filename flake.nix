@@ -7,9 +7,14 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # formatter for *.nix files
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, treefmt-nix, ... }:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -17,7 +22,12 @@
         config = { allowUnfree = true; };
     };
     lib = nixpkgs.lib;
+
+    treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
   in {
+    formatter.${system} = treefmtEval.config.build.wrapper;
+    checks.${system}.formatter = treefmtEval.config.build.check self;
+
     nixosConfigurations = {
     irrenhost = lib.nixosSystem {
         inherit system pkgs;
