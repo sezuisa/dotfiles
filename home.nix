@@ -10,13 +10,23 @@ in
 
 {
   home.packages = with pkgs; [
-    signal-desktop
-    vscode
-    yubioath-flutter
+    # development
     git
+    python3
+    neovim
+    vscode
+    arduino
+
+    # utilities
+    docker
+    yubioath-flutter
+
+    # apps
     firefox
-    opera
+    signal-desktop
     cider
+    gimp
+
   ];
 
   home.username = "sez";
@@ -43,8 +53,6 @@ in
       secondary-color = "#000000";
     };
   };
-
-
 
   home.stateVersion = "23.11";
 }
