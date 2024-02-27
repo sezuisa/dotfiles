@@ -1,12 +1,4 @@
-{ config, pkgs, ... }:
-
-let
-  # to get the hash when adding a new wallpaper, just use 'sha256="";', do a rebuild an use the hash from the error message
-  wallpaper = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/sezuisa/wallpaper-vault/main/star-trek/wallpaper-enterprise-cropped.jpg";
-    sha256 = "0jipiap36xdw8x30p8fpfrzq3y8prb260r73za690ky1hplixfli";
-  };
-in
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -24,7 +16,6 @@ in
     signal-desktop
     cider
     gimp
-
   ];
 
   home.username = "sez";
@@ -32,35 +23,16 @@ in
 
   programs.home-manager.enable = true;
 
-  #manual.manpages.enable = false;
-
   programs.bash.enable = true;
 
-  programs.git = {
-    enable = true;
-    userName = "Sarah Hägele";
-    userEmail = "sarah.haegele01@gmail.com";
-  };
+  imports = [
+    ./vscodium.nix
+    ./git.nix
 
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscodium;
-    extensions = with pkgs.vscode-extensions; [
-      bbenoist.nix
-      github.vscode-pull-request-github
-    ];
-  };
+    ./wallpaper.nix
 
-  dconf.settings = {
-    "org/gnome/desktop/background" = {
-      color-shading-type = "solid";
-      picture-options = "zoom";
-      picture-uri = "file://${wallpaper}";
-      picture-uri-dark = "file://${wallpaper}";
-      primary-color = "#3366ff";
-      secondary-color = "#000000";
-    };
-  };
+    ./default-applications.nix
+  ];
 
   home.stateVersion = "23.11";
 }
