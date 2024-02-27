@@ -34,12 +34,13 @@
           inherit system pkgs;
           modules = [
             ./configuration.nix
-            ./hardware-configuration.nix
+            ./hardware/hardware-configuration.nix
+            ./modules
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               #home-manager.useUserPackages = true;
-              home-manager.users.sez = import ./home.nix;
+              home-manager.users.sez = import ./home/home.nix;
             }
           ];
         };

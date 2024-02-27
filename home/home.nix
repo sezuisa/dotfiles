@@ -11,15 +11,13 @@ in
 {
   home.packages = with pkgs; [
     # development
-    git
     python3
     neovim
-    vscode
     arduino
 
     # utilities
-    docker
     yubioath-flutter
+    podman-compose
 
     # apps
     firefox
@@ -37,10 +35,20 @@ in
   #manual.manpages.enable = false;
 
   programs.bash.enable = true;
+
   programs.git = {
     enable = true;
     userName = "Sarah Hägele";
     userEmail = "sarah.haegele01@gmail.com";
+  };
+
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscodium;
+    extensions = with pkgs.vscode-extensions; [
+      bbenoist.nix
+      github.vscode-pull-request-github
+    ];
   };
 
   dconf.settings = {
