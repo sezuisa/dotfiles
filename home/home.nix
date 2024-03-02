@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, foxtheme, ... }:
 
 {
   home.packages = with pkgs; [
@@ -12,7 +12,6 @@
     podman-compose
 
     # apps
-    firefox
     signal-desktop
     cider
     gimp
@@ -28,6 +27,7 @@
   imports = [
     ./vscodium.nix
     ./git.nix
+    ./firefox.nix
 
     ./wallpaper.nix
 

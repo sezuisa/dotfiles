@@ -12,9 +12,13 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    foxtheme = {
+      url = "github:eromatiya/blurredfox";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, treefmt-nix, ... }:
+  outputs = { self, nixpkgs, home-manager, treefmt-nix, foxtheme, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -41,6 +45,7 @@
               home-manager.useGlobalPkgs = true;
               #home-manager.useUserPackages = true;
               home-manager.users.sez = import ./home/home.nix;
+              home-manager.extraSpecialArgs = { inherit foxtheme; };
             }
           ];
         };

@@ -6,7 +6,7 @@ let
   };
 in
 {
-    dconf.settings = {
+  dconf.settings = {
     "org/gnome/desktop/background" = {
       color-shading-type = "solid";
       picture-options = "zoom";

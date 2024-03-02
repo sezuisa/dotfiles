@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "foxtheme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1632952149,
+        "narHash": "sha256-mYhbOIXjHl9IKPc9cbdB2wXxAc2ZKUvfLE5UfmsOzaE=",
+        "owner": "Filip-Sutkowy",
+        "repo": "blurclean-firefox-theme",
+        "rev": "e037a60f956d26988dad797962072e7284035d80",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Filip-Sutkowy",
+        "repo": "blurclean-firefox-theme",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -39,6 +55,7 @@
     },
     "root": {
       "inputs": {
+        "foxtheme": "foxtheme",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "treefmt-nix": "treefmt-nix"
