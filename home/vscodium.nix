@@ -6,7 +6,10 @@
     package = pkgs.vscodium;
     extensions = with pkgs.vscode-extensions; [
       bbenoist.nix
-      github.vscode-pull-request-github
     ];
+    userSettings = {
+      "window.titleBarStyle" = "custom";
+      "workbench.colorTheme" = "Bearded Theme Coffee";
+    };
   };
 }

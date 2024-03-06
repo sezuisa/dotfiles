@@ -15,6 +15,7 @@
     signal-desktop
     cider
     gimp
+    element-desktop
   ];
 
   home.username = "sez";

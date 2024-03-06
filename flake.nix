@@ -12,8 +12,9 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # custom firefox css
     foxtheme = {
-      url = "github:eromatiya/blurredfox";
+      url = "github:sezuisa/whatthefox";
       flake = false;
     };
   };
