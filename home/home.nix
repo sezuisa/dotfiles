@@ -2,6 +2,9 @@
 
 {
   home.packages = with pkgs; [
+    # gnome
+    gnomeExtensions.blur-my-shell
+
     # development
     python3
     neovim
@@ -16,6 +19,7 @@
     cider
     gimp
     element-desktop
+    keepassxc
   ];
 
   home.username = "sez";
