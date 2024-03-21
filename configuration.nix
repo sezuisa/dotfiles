@@ -45,25 +45,21 @@
     pulse.enable = true;
   };
 
-  # User account
   users.users.sez = {
     isNormalUser = true;
     description = "Sarah Hägele";
-    extraGroups = [ "networkmanager" "wheel" "dialout" ];
-    packages = with pkgs; [
-      firefox
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "dialout"
     ];
   };
 
   environment.systemPackages = with pkgs; [
-    # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     vim
     curl
   ];
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

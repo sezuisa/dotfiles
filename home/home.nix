@@ -1,4 +1,4 @@
-{ pkgs, foxtheme, ... }:
+{ config, pkgs, foxtheme, ... }:
 
 {
   home.packages = with pkgs; [
@@ -9,6 +9,7 @@
     python3
     neovim
     arduino
+    nodejs_21
 
     # utilities
     yubioath-flutter
@@ -20,6 +21,8 @@
     gimp
     element-desktop
     keepassxc
+    thunderbird
+    darktable
   ];
 
   home.username = "sez";
@@ -33,6 +36,9 @@
     ./vscodium.nix
     ./git.nix
     ./firefox.nix
+    ./kdeconnect.nix
+    ./gpg.nix
+    ./protonmail.nix
 
     ./wallpaper.nix
 
