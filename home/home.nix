@@ -14,6 +14,7 @@
     # utilities
     yubioath-flutter
     podman-compose
+    libsForQt5.kdeconnect-kde
 
     # apps
     signal-desktop
@@ -36,7 +37,6 @@
     ./vscodium.nix
     ./git.nix
     ./firefox.nix
-    ./kdeconnect.nix
     ./gpg.nix
     ./protonmail.nix
 
