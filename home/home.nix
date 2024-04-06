@@ -1,4 +1,4 @@
-{ config, pkgs, foxtheme, ... }:
+{ config, pkgs, pkgs-unstable, foxtheme, ... }:
 
 {
   home.packages = with pkgs; [
@@ -22,8 +22,10 @@
     gimp
     element-desktop
     keepassxc
-    thunderbird
     darktable
+
+    # unstable
+    pkgs-unstable.protonmail-desktop
   ];
 
   home.username = "sez";
@@ -38,7 +40,6 @@
     ./git.nix
     ./firefox.nix
     ./gpg.nix
-    ./protonmail.nix
 
     ./wallpaper.nix
 
