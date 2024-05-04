@@ -6,6 +6,7 @@
     package = pkgs.vscodium;
     extensions = with pkgs.vscode-extensions; [
       bbenoist.nix
+      svelte.svelte-vscode
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "beardedtheme";
@@ -23,6 +24,8 @@
     userSettings = {
       "window.titleBarStyle" = "custom";
       "workbench.colorTheme" = "Bearded Theme Coffee";
+      "window.zoomLevel" = 1;
+      "svelte.enable-ts-plugin" = true;
     };
   };
 }

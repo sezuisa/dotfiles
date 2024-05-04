@@ -13,8 +13,16 @@
     };
     spiceUSBRedirection.enable = true;
 
-    podman = {
+    docker = {
       enable = true;
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
+    };
+
+    podman = {
+      enable = false;
       dockerCompat = true;
       dockerSocket.enable = true;
 
@@ -23,7 +31,7 @@
     };
   };
 
-  users.users.sez.extraGroups = [ "libvirtd" ];
+  users.users.sez.extraGroups = [ "libvirtd" "docker" ];
 
   programs.virt-manager.enable = true;
 

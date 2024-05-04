@@ -45,6 +45,9 @@
     pulse.enable = true;
   };
 
+  programs.zsh.enable = true;
+  programs.dconf.enable = true;
+
   users.users.sez = {
     isNormalUser = true;
     description = "Sarah Hägele";
@@ -53,6 +56,7 @@
       "wheel"
       "dialout"
     ];
+    shell = pkgs.zsh;
   };
 
   environment.systemPackages = with pkgs; [

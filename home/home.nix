@@ -15,6 +15,7 @@
     yubioath-flutter
     podman-compose
     libsForQt5.kdeconnect-kde
+    neofetch
 
     # apps
     signal-desktop
@@ -23,6 +24,9 @@
     element-desktop
     keepassxc
     darktable
+    inkscape
+    nuclear
+    bruno
 
     # unstable
     pkgs-unstable.protonmail-desktop
@@ -36,6 +40,8 @@
   programs.bash.enable = true;
 
   imports = [
+    ./zsh.nix
+    ./kitty.nix
     ./vscodium.nix
     ./git.nix
     ./firefox.nix
