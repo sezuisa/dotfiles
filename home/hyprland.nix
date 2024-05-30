@@ -39,16 +39,6 @@
         sha256 = "09j49kpfykx6a7c7xcdrisq9k2bvgblzxlk4gaqrdwn9rhm08w9n";
       };
       submaps = {
-        "FOCUS" = {
-          modifier = "$secMod";
-          key = "B";
-          bindings = [
-            { key = "H"; command = "movefocus"; params = "l"; description = "left"; }
-            { key = "L"; command = "movefocus"; params = "r"; description = "right"; }
-            { key = "K"; command = "movefocus"; params = "u"; description = "up"; }
-            { key = "J"; command = "movefocus"; params = "d"; description = "down"; }
-          ];
-        };
         "SESSION" = {
           modifier = "$secMod";
           key = "L";
@@ -126,6 +116,12 @@
         monitor = ",highres,auto,1";
       };
       extraConfig = ''
+        # focus
+        bind = CTRL,right,movefocus,r
+        bind = CTRL,left,movefocus,l
+        bind = CTRL,up,movefocus,u
+        bind = CTRL,down,movefocus,d
+
         # jump
         bind = $mainMod,1,workspace,1
         bind = $mainMod,2,workspace,2
