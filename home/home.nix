@@ -3,7 +3,9 @@
 {
   home.packages = with pkgs; [
     # gnome
-    gnomeExtensions.blur-my-shell
+    gnome.nautilus # gnome file system
+    evince # gnome pdf reader
+    gnome.eog # gnome image viewer
 
     # development
     python3
@@ -15,7 +17,11 @@
     yubioath-flutter
     podman-compose
     libsForQt5.kdeconnect-kde
-    neofetch
+    fastfetch
+    wl-clipboard
+    unzip
+    pistol
+    file
 
     # apps
     signal-desktop
@@ -47,7 +53,12 @@
     ./firefox.nix
     ./gpg.nix
 
-    ./wallpaper.nix
+    ./waybar
+    ./hyprland.nix
+    ./wofi.nix
+    ./lf.nix
+
+    #./wallpaper.nix
 
     ./default-applications.nix
   ];

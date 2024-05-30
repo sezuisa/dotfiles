@@ -50,7 +50,11 @@
             {
               home-manager.useGlobalPkgs = true;
               #home-manager.useUserPackages = true;
-              home-manager.users.sez = import ./home/home.nix;
+              home-manager.users.sez = {
+                imports = [
+                  ./home/home.nix
+                ];
+              };
               home-manager.extraSpecialArgs = {
                 inherit pkgs-unstable;
                 inherit foxtheme;

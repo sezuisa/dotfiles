@@ -6,7 +6,7 @@
     shellAliases = {
       # shortcuts
       ll = "ls -lisa";
-      n = "neofetch";
+      ff = "fastfetch";
 
       # nixos update commands
       update = "sudo nixos-rebuild switch --flake .#";
@@ -19,7 +19,7 @@
     enableCompletion = true;
 
     initExtra = ''
-      neofetch
+      fastfetch
     '';
 
     oh-my-zsh = {
