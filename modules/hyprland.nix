@@ -13,12 +13,14 @@
   };
 
   services = {
+    libinput.enable = true;
     xserver = {
       enable = true;
-      layout = "de";
-      xkbVariant = "";
+      xkb = {
+        layout = "de";
+        variant = "";
+      };
       excludePackages = [ pkgs.xterm ];
-      libinput.enable = true;
       displayManager.gdm = {
         enable = true;
         wayland = true;

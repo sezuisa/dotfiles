@@ -11,7 +11,7 @@
     python3
     neovim
     arduino
-    nodejs_21
+    nodejs_22
 
     # utilities
     yubioath-flutter
@@ -51,7 +51,6 @@
     ./vscodium.nix
     ./git.nix
     ./firefox.nix
-    ./gpg.nix
 
     ./waybar
     ./hyprland.nix
