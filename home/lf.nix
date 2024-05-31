@@ -31,5 +31,27 @@ in
     settings = {
       cleaner = "${clean_script}";
     };
+    keybindings = {
+      a = ":push %mkdir<space>";
+      r = "push :rename<space>";
+      t = "trash";
+      "<delete>" = "delete";
+    };
+    commands = {
+      rename = "%[ -e $1 ] && printf \"file exists\" || mv $f $1";
+      trash = "%set -f; mv $fx ~/.trash";
+      delete = ''
+        ''${{
+        set -f
+        printf "$fx\n"
+        printf "delete?[y/n]"
+        read ans
+        [ "$ans" = "y" ] && rm -rf $fx
+        }}
+      '';
+    };
+    extraConfig = ''
+      %mkdir -p ~/.trash
+    '';
   };
 }
