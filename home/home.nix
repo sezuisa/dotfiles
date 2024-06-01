@@ -35,7 +35,7 @@
     bruno
 
     # unstable
-    pkgs-unstable.protonmail-desktop
+    protonmail-desktop
   ];
 
   home.username = "sez";

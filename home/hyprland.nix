@@ -86,7 +86,7 @@
         "$mainMod" = "SUPER";
         "$secMod" = "ALT";
         input = {
-          kb_layout = "us,de";
+          kb_layout = "de,us";
           kb_options = "grp:alt_shift_toggle";
           touchpad = {
             natural_scroll = true;
