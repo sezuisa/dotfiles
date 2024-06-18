@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     # gnome
-    gnome.nautilus # gnome file system
     evince # gnome pdf reader
     gnome.eog # gnome image viewer
 
@@ -54,7 +53,7 @@
 
     ./waybar
     ./hyprland.nix
-    ./wofi.nix
+    ./rofi.nix
     ./lf.nix
 
     #./wallpaper.nix

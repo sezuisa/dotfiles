@@ -28,3 +28,8 @@ It is the number one law of software that things break and go wrong. This might 
 For some reason, the GUI for Electron-based apps like VSCodium and Cider can become extremely buggy sometimes - this seems to be a Chromium issue, see [here](https://github.com/electron/electron/issues/40366) and [here](https://chromium-review.googlesource.com/c/chromium/src/+/4988290). In any case, the GUI can usually be fixed by deleting some GPU-cache-directories for the affected app:
 
 `rm -r ~/.config/<APPNAME>/GPUCache ~/.config/<APPNAME>/Crashpad`
+
+### Problems with missing files after garbage collection
+Try a nix-store repair, then try rebuilding the system again:
+
+`sudo nix-store --repair --verify --check-contents`

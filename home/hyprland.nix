@@ -164,15 +164,32 @@
         exec-once = ${pkgs.swaybg}/bin/swaybg --image ${wallpaper}
 
         # launch
-        bind = $mainMod,SPACE,exec,${pkgs.wofi}/bin/wofi --show=drun
+        $focusRofi = & while [ "$(hyprctl clients | grep "class: Rofi")x" == "x" ]; do continue; done; hyprctl dispatch focuswindow "^(Rofi)"
+        bind = $mainMod,SPACE,exec,${pkgs.rofi}/bin/rofi -show drun $focusRofi
+
         # terminal
         bind = $mainMod,Return,exec,kitty
-        bind = $secMod,SPACE,exec,hyprctl devices | ${pkgs.gnugrep}/bin/grep 'keyboard' | tr -d '\t' | xargs -I KEYBOARD hyprctl switchxkblayout KEYBOARD next
+
         # brightness
-        bind = $secMod,up,exec,${pkgs.brightnessctl}/bin/brightnessctl set +10%
-        bind = $secMod,down,exec,${pkgs.brightnessctl}/bin/brightnessctl set 10%-
+        bind = ,XF86MonBrightnessUp,exec,${pkgs.brightnessctl}/bin/brightnessctl set +10%
+        bind = ,XF86MonBrightnessDown,exec,${pkgs.brightnessctl}/bin/brightnessctl set 10%-
+
+        # volume
+        bind = ,XF86AudioMute,exec,${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
+        bind = ,XF86AudioMicMute,exec,${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle
+        bind = ,XF86AudioRaiseVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%
+        bind = ,XF86AudioLowerVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%
+        bind = SHIFT,XF86AudioRaiseVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +1%
+        bind = SHIFT,XF86AudioLowerVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -1%
+
+        # media
+        bind = ,XF86AudioPlay,exec,${pkgs.playerctl}/bin/playerctl play-pause
+        bind = ,XF86AudioNext,exec,${pkgs.playerctl}/bin/playerctl next
+        bind = ,XF86AudioPrev,exec,${pkgs.playerctl}/bin/playerctl previous
+
         # screenshot
         bind = CTRL SHIFT,s,exec,${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
+
         #file manager
         bind = $mainMod,F,exec,kitty lf
 
