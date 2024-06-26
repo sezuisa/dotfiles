@@ -45,6 +45,7 @@
   programs.bash.enable = true;
 
   imports = [
+    ./clonerer.nix
     ./zsh.nix
     ./kitty.nix
     ./vscodium.nix
