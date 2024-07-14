@@ -25,6 +25,17 @@ The `clonerer` is a shitty bash script, which clones the defined git repos and a
 ### List packages installed in system profile
 `nix search wget`
 
+
+### Fingerprint authentication
+
+```bash
+# add fingerprint
+sudo fprintd-enroll sez
+
+# verify fingerprint
+sudo fprintd-verify sez
+```
+
 ## Troubleshooting
 It is the number one law of software that things break and go wrong. This might prevent some future mild annoyance.
 
