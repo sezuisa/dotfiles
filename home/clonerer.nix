@@ -2,82 +2,56 @@
 let
   /* The 'clonerer' is a tool which clones git repos to specified locations and sets up additional git remotes for them. */
 
-  #gitBasePath = "/home/ruben/Developer/git";
-  gitBasePath = "/home/ruben/automated-developer/git";
+  gitBasePath = "/home/sez/SC";
   configFile = pkgs.writeText "clonerer-config.json" (builtins.toJSON [
     {
-      name = "Matrix-MQTT-Bridge";
-      path = "${gitBasePath}";
-      origin = "git@github.com:rubenhoenle/Matrix-MQTT-Bridge.git";
-    }
-    {
-      name = "NixOServer";
-      path = "${gitBasePath}";
-      origin = "git@github.com:rubenhoenle/NixOServer.git";
-    }
-    {
-      name = "pi-nixos";
-      path = "${gitBasePath}";
-      origin = "git@github.com:rubenhoenle/pi-nixos.git";
-    }
-    {
-      name = "bergkapellen-docs";
-      path = "${gitBasePath}";
-      origin = "git@github.com:rubenhoenle/bergkapellen-docs.git";
+      name = "portfolio";
+      path = "${gitBasePath}/personal";
+      origin = "git@github.com:sezuisa/portfolio.git";
     }
     {
       name = "docker-composer";
-      path = "${gitBasePath}";
+      path = "${gitBasePath}/quark";
       origin = "git@github.com:rubenhoenle/docker-composer.git";
-    }
-    {
-      name = "gigacube";
-      path = "${gitBasePath}";
-      origin = "git@github.com:rubenhoenle/gigacube.git";
-    }
-    {
-      name = "lovebox";
-      path = "${gitBasePath}";
-      origin = "git@github.com:rubenhoenle/lovebox.git";
-    }
-    {
-      name = "adventofcode";
-      path = "${gitBasePath}";
-      origin = "git@github.com:rubenhoenle/adventofcode.git";
-    }
-    {
-      name = "wiki";
-      path = "${gitBasePath}";
-      origin = "git@github.com:rubenhoenle/wiki.git";
     }
     {
       /* golo300 dotfiles */
       name = "golo300";
-      path = "${gitBasePath}/bromance-dotfiles";
-      origin = "git@github.com:rubenhoenle/golo300-dotfiles.git";
+      path = "${gitBasePath}/dubiose-dotfiles";
+      origin = "git@github.com:sezuisa/golo300-dotfiles.git";
       remotes = {
         upstream = "git@github.com:Golo300/dotfiles.git";
-        ruben = "git@github.com:rubenhoenle/dotfiles.git";
+        sez = "git@github.com:sezuisa/dotfiles.git";
       };
     }
     {
       /* jgero dotfiles */
       name = "jgero";
-      path = "${gitBasePath}/bromance-dotfiles";
-      origin = "git@github.com:rubenhoenle/jgero-dotfiles.git";
+      path = "${gitBasePath}/dubiose-dotfiles";
+      origin = "git@github.com:sezuisa/jgero-dotfiles.git";
       remotes = {
         upstream = "git@github.com:jgero/dotfiles.git";
-        ruben = "git@github.com:rubenhoenle/dotfiles.git";
+        sez = "git@github.com:sezuisa/dotfiles.git";
       };
     }
     {
       /* mschwer dotfiles */
       name = "mschwer";
-      path = "${gitBasePath}/bromance-dotfiles";
-      origin = "git@github.com:rubenhoenle/Markus-Schwer-dotfiles.git";
+      path = "${gitBasePath}/dubiose-dotfiles";
+      origin = "git@github.com:sezuisa/mschwer-dotfiles.git";
       remotes = {
         upstream = "git@github.com:Markus-Schwer/dotfiles.git";
-        ruben = "git@github.com:rubenhoenle/dotfiles.git";
+        sez = "git@github.com:sezuisa/dotfiles.git";
+      };
+    }
+    {
+      /* rubenhoenle dotfiles */
+      name = "rubenhoenle";
+      path = "${gitBasePath}/dubiose-dotfiles";
+      origin = "git@github.com:sezuisa/rubenhoenle-dotfiles.git";
+      remotes = {
+        upstream = "git@github.com:rubenhoenle/dotfiles.git";
+        sez = "git@github.com:sezuisa/dotfiles.git";
       };
     }
   ]);
