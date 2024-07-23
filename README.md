@@ -12,6 +12,10 @@ Because why would I trust my memory to keep track of a few simple commands?
 ### Flake Update
 `nix flake update`
 
+### Clonerer
+The `clonerer` is a shitty bash script, which clones the defined git repos and adds the given git remotes to them.
+`clonerer`
+
 ### Nix/Flake Rebuild
 `sudo nixos-rebuild switch --flake .#[hostname]`
 
