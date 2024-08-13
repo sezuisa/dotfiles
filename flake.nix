@@ -8,6 +8,8 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # ags (widget framework)
+    ags.url = "github:Aylur/ags";
     # formatter for *.nix files
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
@@ -20,7 +22,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, treefmt-nix, foxtheme, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, treefmt-nix, foxtheme, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -56,8 +58,7 @@
                 ];
               };
               home-manager.extraSpecialArgs = {
-                inherit pkgs-unstable;
-                inherit foxtheme;
+                inherit inputs;
               };
             }
           ];

@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, foxtheme, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -32,6 +32,7 @@
     inkscape
     nuclear
     bruno
+    prusa-slicer
 
     # unstable
     protonmail-desktop
@@ -56,6 +57,7 @@
     ./hyprland.nix
     ./rofi.nix
     ./lf.nix
+    ./ags/ags.nix
 
     #./wallpaper.nix
 

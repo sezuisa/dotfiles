@@ -4,26 +4,13 @@
     enable = true;
     systemd.enable = true;
     settings = {
-      foo = {
+      sezbar = {
         layer = "top";
         modules-center = [ "hyprland/workspaces" "network" "pulseaudio" "battery" "clock" ];
         "hyprland/workspaces" = {
           disable-scroll = true;
           all-outputs = true;
           format = "{name}";
-          # persistent_workspaces =
-          #   {
-          #     1 = [];
-          #     2 = [];
-          #     3 = [];
-          #     4 = [];
-          #     5 = [];
-          #     6 = [];
-          #     7 = [];
-          #     8 = [];
-          #     9 = [];
-          #     10 = [];
-          #     };
         };
         clock = {
           format = "{:%A | %F | %H:%M}";
