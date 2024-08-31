@@ -4,6 +4,7 @@
     font-family: JetBrains Mono;
     font-size: 14px;
     min-height: 0;
+    background: transparent;
 }
 
 window#waybar {
@@ -12,11 +13,9 @@ window#waybar {
 }
 
 tooltip {
-	background: #0f0f0f;
+	background: rgb(99, 71, 60);
 	border-radius: 15px;
-	border-width: 2px;
-	border-style: solid;
-	border-color: #262626;
+    border: none;
 	}
 
 #workspaces button {

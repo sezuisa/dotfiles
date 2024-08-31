@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, ... }:
+{ config, pkgs, pkgs-unstable, lib, inputs, ... }:
 {
 
   gtk = {
@@ -6,8 +6,21 @@
     cursorTheme.package = pkgs.bibata-cursors;
     cursorTheme.name = "Bibata-Modern-Ice";
 
-    theme.package = pkgs.nightfox-gtk-theme;
-    theme.name = "Nightfox-Dusk-BL";
+    theme.name = "catppuccin-mocha-peach-standard+black";
+    theme.package = pkgs.catppuccin-gtk.override {
+      accents = [ "peach" ];
+      size = "standard";
+      tweaks = [ "black" ];
+      variant = "mocha";
+    };
+
+    gtk2.extraConfig = "gtk-application-prefer-dark-theme = 1";
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
   };
 
   dconf.settings = {
@@ -16,6 +29,13 @@
     };
   };
 
+  xdg.configFile = {
+    "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
+    "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
+    "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
+  };
+
+  xdg.dataFile."config-assets/nixos.jpg".source = ../assets/nixos.jpg;
   programs.swaylock = {
     enable = true;
     settings = {
@@ -27,7 +47,7 @@
       key-hl-color = "87c1cf";
       ring-color = "6081ac";
       show-failed-attempts = false;
-      image = "/home/sez/nixos/assets/nixos.jpg";
+      image = "${config.home.homeDirectory}/.local/share/config-assets/nixos.jpg";
     };
   };
 
@@ -59,11 +79,21 @@
             { key = "J"; command = "resizeactive"; params = "0 10"; description = "down"; repeatable = true; }
           ];
         };
+        "MOVE" = {
+          modifier = "$secMod";
+          key = "M";
+          bindings = [
+            { key = "H"; command = "moveactive"; params = "-40 0"; description = "left"; repeatable = true; }
+            { key = "L"; command = "moveactive"; params = "40 0"; description = "right"; repeatable = true; }
+            { key = "K"; command = "moveactive"; params = "0 -40"; description = "up"; repeatable = true; }
+            { key = "J"; command = "moveactive"; params = "0 40"; description = "down"; repeatable = true; }
+          ];
+        };
         "SETTINGS" = {
           modifier = "$secMod";
           key = "S";
           bindings = [
-            { key = "N"; command = "exec"; params = "hyprctl dispatch submap reset && kitty --detach -T nmtui ${pkgs.zsh}/bin/zsh -c nmtui"; description = "etwork"; }
+            { key = "N"; command = "exec"; params = "hyprctl dispatch submap reset && ${pkgs-unstable.networkmanager_dmenu}/bin/networkmanager_dmenu"; description = "etwork"; }
             { key = "B"; command = "exec"; params = "hyprctl dispatch submap reset && kitty --detach -T bluetuith ${pkgs.zsh}/bin/zsh -c ${pkgs.bluetuith}/bin/bluetuith"; description = "luetooth"; }
             { key = "S"; command = "exec"; params = "hyprctl dispatch submap reset && ${pkgs.pavucontrol}/bin/pavucontrol"; description = "ound"; }
           ];
@@ -93,11 +123,12 @@
           };
         };
         general = {
-          "gaps_in" = 3;
-          "gaps_out" = 10;
-          "border_size" = 1;
+          gaps_in = 3;
+          gaps_out = 10;
+          border_size = 1;
           "col.active_border" = "0xeed18c47";
           "col.inactive_border" = "0xaa96724e";
+          resize_on_border = true;
         };
         decoration = {
           rounding = 10;
@@ -108,9 +139,12 @@
             noise = 0.1;
           };
         };
+        gestures = {
+          workspace_swipe = true;
+        };
         misc = {
           disable_hyprland_logo = true;
-          "force_default_wallpaper" = 0; # Set to 0 to disable the anime mascot wallpapers
+          force_default_wallpaper = 0; # Set to 0 to disable the anime mascot wallpapers
         };
         # highres and scaling 1 is important to fix wayland scaling issues
         monitor = ",highres,auto,1";
@@ -163,9 +197,15 @@
 
         exec-once = ${pkgs.swaybg}/bin/swaybg --image ${wallpaper}
 
+        # lock screen on lid close
+        bindl = ,switch:Lid Switch,exec,${pkgs.swaylock}/bin/swaylock
+
         # launch
-        $focusRofi = & while [ "$(hyprctl clients | grep "class: Rofi")x" == "x" ]; do continue; done; hyprctl dispatch focuswindow "^(Rofi)"
-        bind = $mainMod,SPACE,exec,${pkgs.rofi}/bin/rofi -show drun $focusRofi
+        bind = $mainMod,SPACE,exec,rofi -show drun -show-icons
+        layerrule = dimaround,rofi
+        layerrule = animation popin 80%,rofi
+        layerrule = blur,rofi
+        layerrule = ignorealpha 0.2,rofi
 
         # terminal
         bind = $mainMod,Return,exec,kitty
@@ -190,13 +230,20 @@
         # screenshot
         bind = CTRL SHIFT,s,exec,${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
 
-        #file manager
+        # file manager
         bind = $mainMod,F,exec,kitty lf
 
-        # floating settings windows
-        windowrule = float,title:^(nmtui|bluetuith|Volume Control|quicknote)$
-        windowrule = center,title:^(nmtui|bluetuith|Volume Control|quicknote)$
+        # floating windows
+        bind = $mainMod, V, togglefloating
+        bindm = $mainMod, mouse:272, movewindow
+        bindm = $mainMod, Control_L, movewindow
+        bindm = $mainMod, mouse:273, resizewindow
+        bindm = $mainMod, ALT_L, resizewindow
+
+        windowrule = float,title:^(nmtui|bluetuith|Volume Control|quicknote|Calendar)$
+        windowrule = center,title:^(nmtui|bluetuith|Volume Control|quicknote|Calendar)$
         windowrule = size 900 500,title:^(nmtui|bluetuith|Volume Control|quicknote)$
+        windowrule = size 1200 900,title:^(Calendar)$
       '';
     };
 }

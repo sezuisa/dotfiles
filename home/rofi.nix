@@ -1,5 +1,6 @@
 { pkgs, config, ... }:
 {
+  xdg.dataFile."config-assets/search.svg".source = ../assets/search.svg;
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
@@ -27,6 +28,7 @@
         };
 
         "window" = {
+          transparency = "real";
           background-color = mkLiteral "@bg0";
 
           location = mkLiteral "center";
@@ -43,7 +45,7 @@
 
         "icon-search" = {
           expand = mkLiteral "false";
-          filename = "search";
+          filename = "${config.home.homeDirectory}/.local/share/config-assets/search.svg";
           size = mkLiteral "28px";
           vertical-align = mkLiteral "0.5";
         };

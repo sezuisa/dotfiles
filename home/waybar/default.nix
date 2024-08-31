@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 {
   programs.waybar = {
     enable = true;
@@ -11,23 +11,11 @@
           disable-scroll = true;
           all-outputs = true;
           format = "{name}";
-          # persistent_workspaces =
-          #   {
-          #     1 = [];
-          #     2 = [];
-          #     3 = [];
-          #     4 = [];
-          #     5 = [];
-          #     6 = [];
-          #     7 = [];
-          #     8 = [];
-          #     9 = [];
-          #     10 = [];
-          #     };
         };
         clock = {
+          on-double-click = "gnome-calendar";
           format = "{:%A | %F | %H:%M}";
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          tooltip = false;
         };
         battery = {
           states = {
@@ -41,14 +29,15 @@
           format-full = "BAT: {capacity}%";
         };
         network = {
+          on-double-click = "${pkgs-unstable.networkmanager_dmenu}/bin/networkmanager_dmenu";
           format = "NET";
           format-wifi = "NET: {essid}";
           format-ethernet = "NET: WIRED";
           format-disconnected = "Net Disconnected";
-          tooltip-format-wifi = "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}";
+          tooltip = false;
         };
         pulseaudio = {
-          on-click = "pactl set-sink-mute 45 toggle";
+          on-double-click = "${pkgs.pavucontrol}/bin/pavucontrol";
           format = "{icon}: {volume}%";
           format-muted = "VOL: Muted";
           format-icons = {
@@ -60,6 +49,7 @@
             car = "C";
             default = [ "VOL" ];
           };
+          tooltip = false;
         };
       };
     };

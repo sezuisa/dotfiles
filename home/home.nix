@@ -21,6 +21,7 @@
     unzip
     pistol
     file
+    networkmanagerapplet
 
     # apps
     signal-desktop
@@ -32,9 +33,11 @@
     inkscape
     nuclear
     bruno
+    prusa-slicer
+    protonmail-desktop
 
     # unstable
-    protonmail-desktop
+    pkgs-unstable.networkmanager_dmenu
   ];
 
   home.username = "sez";
@@ -56,6 +59,7 @@
     ./hyprland.nix
     ./rofi.nix
     ./lf.nix
+    ./nmdm-config.nix
 
     #./wallpaper.nix
 
