@@ -207,6 +207,18 @@
         layerrule = blur,rofi
         layerrule = ignorealpha 0.2,rofi
 
+        # notifications
+        layerrule = blur,^(swaync-control-center)$
+        layerrule = ignorealpha 0.2,^(swaync-control-center)$
+        layerrule = animation slide right,^(swaync-control-center)$
+        layerrule = blur,^(swaync-notification-window)$
+        layerrule = ignorealpha 0.2,^(swaync-notification-window)$
+        layerrule = animation slide top,^(swaync-notification-window)$
+
+        # waybar background blur
+        layerrule = blur,^(waybar)$
+        layerrule = ignorealpha 0.2,^(waybar)$
+
         # terminal
         bind = $mainMod,Return,exec,kitty
 
@@ -232,6 +244,9 @@
 
         # file manager
         bind = $mainMod,F,exec,kitty lf
+
+        # control center
+        bind = $secMod,C,exec,swaync-client -t -sw
 
         # floating windows
         bind = $mainMod, V, togglefloating

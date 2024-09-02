@@ -1,3 +1,7 @@
+/* ----------------------------------------------
+See theme/sezziato.md for theme color definitions
+---------------------------------------------- */
+
 * {
     border: none;
     border-radius: 0;
@@ -9,79 +13,79 @@
 
 window#waybar {
     background: transparent;
-    color: white;
+    color: /*text*/rgb(255, 255, 255);
 }
 
 tooltip {
-	background: rgb(99, 71, 60);
+	background: /*base*/rgb(99, 71, 60);
 	border-radius: 15px;
     border: none;
 	}
 
 #workspaces button {
     padding: 5px 10px;
-    color: #f0f0f0;
+    color: /*text*/rgb(255, 255, 255);
 }
 
 #workspaces button.active {
-    color: #0f0f0f;
-    background-color: rgba(212, 158, 114, 0.5);
+    color: /*dark-cocoa*/rgb(47, 35, 31);
+    background-color: /*surface1*/rgb(125, 92, 73);
     border-radius: 15px;
 }
 
 #workspaces button.focused {
-    color: #0f0f0f;
-    background-color: #c49ec4;
+    color: /*dark-cocoa*/rgb(47, 35, 31);
+    background-color: /*mango*/rgb(209, 140, 71);
     border-radius: 15px;
 }
 
 #workspaces button.urgent {
-    color: #0f0f0f;
-    background-color: #9ec3c4;
+    color: /*dark-cocoa*/rgb(47, 35, 31);
+    background-color: /*mango*/rgb(209, 140, 71);
     border-radius: 15px;
 }
 
 #workspaces button:hover {
-	background-color: #c49ec4;
-	color: #0f0f0f;
+	background-color: /*lavender*/rgb(196, 158, 196);
+	color: /*dark-cocoa*/rgb(47, 35, 31);
 	border-radius: 15px;
 }
 
 #clock, #battery, #pulseaudio, #network, #workspaces {
-	background-color: rgba(44, 32, 27, 0.862);
+    background-color: /*dark-cocoa-08*/rgba(47, 35, 31, 0.8);
 	padding: 5px 10px;
 	margin: 5px 0px;
 }
 
 #workspaces {
-	background-color: rgba(99, 71, 60, 0.495);
+	background-color: /*base-05*/rgba(99, 71, 60, 0.5);
 	border-radius: 15px 0px 0px 15px;
 }
 
 #clock {
-    color: #938acd;
+    color: /*lavender*/rgb(196, 158, 196);
     border-radius: 0px 15px 15px 0px;
     margin-right: 10px;
 }
 
 #battery {
-    color: #9ec49f;
+    color: /*pistachio*/rgb(158, 196, 159);
 }
 
 #battery.charging {
-    color: #63af66;
+    color: /*pistachioer*/rgb(99, 175, 102);
 }
 
 #battery.warning:not(.charging) {
-    background-color: #c49ea0;
-    color: #0f0f0f;
+    background-color: /*rose*/rgb(205, 146, 150);
+    color: /*dark-cocoa*/rgb(47, 35, 31);
 }
 
 #network {
-	color: #e7c59e;
+	color: /*sunrise*/rgb(231, 197, 158);
 	border-radius: 0px 0px 0px 0px;
 }
 
 #pulseaudio {
-	color: #8da9d4;
+	color: /*sky*/rgb(141, 169, 212);
 }

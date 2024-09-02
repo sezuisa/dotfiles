@@ -11,16 +11,15 @@
       in
       {
         "*" = {
-          bg0 = mkLiteral "rgba(99, 71, 60, 50%)";
+          base-05 = mkLiteral "rgba(99, 71, 60, 50%)";
           bg1 = mkLiteral "rgba(126, 126, 126, 80%)";
-          bg2 = mkLiteral "rgba (209, 140, 71, 100%)";
+          mango = mkLiteral "rgba (209, 140, 71, 100%)";
 
-          fg0 = mkLiteral "rgba(222, 222, 222, 100%)";
-          fg1 = mkLiteral "rgba(255, 255, 255, 100%)";
-          fg2 = mkLiteral "rgba (209, 140, 71, 100%)";
+          text-08 = mkLiteral "rgba(255, 255, 255, 80%)";
+          text = mkLiteral "rgba(255, 255, 255, 100%)";
 
           background-color = mkLiteral "transparent";
-          text-color = mkLiteral "@fg0";
+          text-color = mkLiteral "@text-08";
 
           margin = 0;
           padding = 0;
@@ -29,7 +28,7 @@
 
         "window" = {
           transparency = "real";
-          background-color = mkLiteral "@bg0";
+          background-color = mkLiteral "@base-05";
 
           location = mkLiteral "center";
           width = 640;
@@ -64,7 +63,7 @@
           font = mkLiteral "inherit";
           vertical-align = mkLiteral "0.5";
           placeholder = "Search";
-          placeholder-color = mkLiteral "@fg2";
+          placeholder-color = mkLiteral "@mango";
         };
 
         "message" = {
@@ -93,17 +92,17 @@
         };
 
         "element normal active" = {
-          text-color = mkLiteral "@bg2";
+          text-color = mkLiteral "@mango";
         };
 
         "element selected normal" = {
-          background-color = mkLiteral "@bg2";
-          text-color = mkLiteral "@fg1";
+          background-color = mkLiteral "@mango";
+          text-color = mkLiteral "@text";
         };
 
         "element selected active" = {
-          background-color = mkLiteral "@bg2";
-          text-color = mkLiteral "@fg1";
+          background-color = mkLiteral "@mango";
+          text-color = mkLiteral "@text";
         };
       };
   };

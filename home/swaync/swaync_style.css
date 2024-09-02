@@ -1,0 +1,395 @@
+/* ----------------------------------------------
+See theme/sezziato.md for theme color definitions
+---------------------------------------------- */
+
+* {
+  all: unset;
+  font-size: 14px;
+  font-family: JetBrains Mono;
+  transition: 200ms;
+}
+
+/* Avoid 'annoying' backgroud */
+.blank-window {  
+  background: transparent;  
+}
+
+/* COMMON NOTIFICATION STYLES --------------------------------- */
+
+.notification-row .notification-background .notification.critical {
+  box-shadow: inset 0 0 7px 0 /*red*/rgb(182, 84, 82);
+  border: 1px solid /*redder*/rgb(206, 78, 76);
+}
+
+.notification-row .notification-background .notification .notification-content {
+  margin: 6px;
+  padding: 4px;
+}
+
+.notification-row .notification-background .notification .notification-content .text-box {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.notification-row .notification-background .notification .notification-content .image,
+.notification-row .notification-background .notification .notification-content .app-icon,
+.body-image {
+  margin-right: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+}
+
+.time {
+  color: /*text-05*/rgba(255, 255, 255, 0.5);
+}
+
+.notification-row .notification-background .notification > *:last-child > * {
+  min-height: 3.4em;
+}
+
+.notification-row .notification-background .notification > *:last-child > * .notification-action {
+  color: /*text*/rgb(255, 255, 255);
+  border-radius: 12px;
+  margin: 4px;
+}
+
+.notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
+  background-color: /*lavender*/rgb(196, 158, 196);
+}
+
+.notification-row .notification-background .notification > *:last-child > * .notification-action:active {
+  background-color: /*mango*/rgb(209, 140, 71);
+}
+
+/* Notification Close Button */
+
+.close-button {
+  background: transparent;
+  border-radius: 100%;
+  color: /*text*/rgb(255, 255, 255);
+  margin-top: 2px;
+  margin-right: 2px;
+  padding: 0px;
+}
+
+.close-button:hover {
+  background-color: /*red*/rgb(182, 84, 82);
+}
+
+.close-button:active {
+  background-color: /*redder*/rgb(206, 78, 76);
+}
+
+progressbar,
+progress {
+  border-radius: 12px;
+}
+
+progressbar {
+  background-color: rgba(255,255,255,.1);
+}
+
+.notification.critical progress {
+  background-color: /*red*/rgb(182, 84, 82);
+}
+
+.notification.low progress,
+.notification.normal progress {
+  background-color: /*mango*/rgb(209, 140, 71);
+}
+
+/* FLOATING NOTIFICATIONS -------------------------------------- */
+
+.floating-notifications.background .notification-row .notification-background {
+  background-color: /*base-05*/rgba(99, 71, 60, 0.5);
+  color: /*text*/rgb(255, 255, 255);
+  border-radius: 16px;
+  margin: 0px 18px;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification.normal,
+.floating-notifications.background .notification-row .notification-background .notification.low {
+  border: 1px solid /*mango*/rgb(209, 140, 71);
+  border-radius: 16px;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification.critical {
+  background-color: /*base-05*/rgba(99, 71, 60, 0.5);
+  color: /*text*/rgb(255, 255, 255);
+  border-radius: 16px;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action {
+  background-color:  /*dark-cocoa-05*/rgba(47, 35, 31, 0.5);
+}
+
+/* CONTROL CENTER -------------------------------------- */
+
+.control-center {
+  border-radius: 24px;
+  margin: 18px;
+  background-color: /*base-05*/rgba(99, 71, 60, 0.5);
+  color: /*text*/rgb(255, 255, 255);
+  padding: 14px;
+}
+
+/* Notifications  */
+.control-center .notification-row .notification-background {
+  background-color: /*surface0*/rgb(125, 92, 73);
+  border-radius: 16px;
+  margin: 4px 0px;
+}
+
+.control-center .notification-row .notification-background .notification.critical {
+  background-color: /*surface0*/rgb(125, 92, 73);
+  border-radius: 16px;
+}
+
+.control-center .notification-row .notification-background .notification > *:last-child > * .notification-action {
+  background-color: /*surface1-05*/rgba(79, 57, 49, 0.5);
+}
+
+.control-center .control-center-list-placeholder {
+  /* The placeholder when there are no notifications */
+  opacity: 0.5;
+}
+
+/* Notifications expanded-group */
+
+.notification-group {
+  margin: 2px 8px 2px 8px;
+
+}
+.notification-group-headers {
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: /*text*/rgb(255, 255, 255);
+  letter-spacing: 2px;
+}
+
+.notification-group.collapsed .notification-row:not(:last-child) .notification-background {
+  opacity: 0.5;
+}
+
+.notification-group-icon {
+  color: /*text*/rgb(255, 255, 255);
+}
+
+.notification-group-collapse-button,
+.notification-group-close-all-button {
+  background: transparent;
+  color: /*text*/rgb(255, 255, 255);
+  margin: 4px; 
+  border-radius: 100%;
+  padding: 4px;
+}
+
+.notification-group-collapse-button:hover,
+.notification-group-close-all-button:hover {
+  background: /*lavender*/rgb(196, 158, 196);
+}  
+
+/* WIDGETS --------------------------------------------------- */
+
+.widget-title {
+  margin: 6px;
+}
+
+.widget-title>label {
+  color: /*text*/rgb(255, 255, 255);
+  font-size: 1.5rem;
+}
+
+/* Notification clear button */
+.widget-title button {
+  font-family: JetBrains Mono NerdFont;
+  border-radius: 12px;
+  color: /*text*/rgb(255, 255, 255);
+  background-color: /*surface0*/rgb(125, 92, 73);;
+  padding: 8px 25px;
+}
+
+.widget-title button label {
+  font-size: 1.5rem;
+}
+
+.widget-title button:hover {
+  background-color: /*lavender*/rgb(196, 158, 196);
+  color: /*text*/rgb(255, 255, 255);
+}
+
+.widget-title button:active {
+  background-color: /*mango*/rgb(209, 140, 71);
+  color: /*text*/rgb(255, 255, 255);
+}
+
+/* Do not disturb */
+
+.widget-dnd {
+  margin: 6px;
+  font-size: 1.2rem;
+}
+
+.widget-dnd > switch {
+  border-radius: 12px;
+  background: /*dark-cocoa*/rgb(47, 35, 31);
+  box-shadow: none;
+  font-size: initial;
+  padding: 2px;
+}
+
+.widget-dnd > switch:checked {
+  background: /*mango*/rgb(209, 140, 71);
+}
+
+.widget-dnd > switch slider {
+  background: /*surface0*/rgb(125, 92, 73);
+  border-radius: 12px;
+}
+
+/* Buttons menu */
+
+.widget-buttons-grid {
+  padding: 6px 2px;
+  margin: 6px;
+  border-radius: 20px;
+  background: /*dark-cocoa-05*/rgba(47, 35, 31, 0.5);
+}
+  
+.widget-buttons-grid>flowbox>flowboxchild>button {
+  padding: 12px 35px;
+  margin: 6px;
+  background: transparent;
+  border-radius: 12px;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button label {
+  font-family: JetBrains Mono NerdFont;
+  font-size: 1.5rem;
+}
+  
+.widget-buttons-grid>flowbox>flowboxchild>button:hover {
+  background: /*lavender*/rgb(196, 158, 196);
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button:active {
+  background: /*mango*/rgb(209, 140, 71);
+}
+
+.widget-buttons-grid>flowbox>flowboxchild:last-child {
+  border-left: 2px solid /*surface0*/rgb(125, 92, 73);
+}
+.widget-buttons-grid>flowbox>flowboxchild:first-child {
+  border-right: 2px solid /*surface0*/rgb(125, 92, 73);
+}
+
+
+/* Music player */
+
+.widget-mpris {
+  background-color: /*dark-cocoa-05*/rgba(47, 35, 31, 0.5);
+  border-radius: 20px;
+  color: /*text*/rgb(255, 255, 255);
+  margin:  6px;
+  padding: 10px 10px 0px 10px;
+  box-shadow: unset;
+}
+
+.widget-mpris-player {
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: unset;
+}
+
+.widget-mpris > box > button {
+  color: /*text*/rgb(255, 255, 255);
+  border-radius: 20px;
+}
+
+.widget-mpris button {
+  color: /*text-05*/rgba(255, 255, 255, 0.5);
+}
+
+.widget-mpris button:hover {
+  color: /*text*/rgb(255, 255, 255);
+}
+
+.widget-mpris-album-art {
+  border-radius: 16px;
+}
+
+.widget-mpris-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.widget-mpris-subtitle {
+  font-size: 1rem;
+}
+
+/* Volume & Backlight */
+
+trough {
+  border-radius: 20px;
+  background: /*dark-cocoa*/rgb(47, 35, 31);
+  border: 1px solid /*dark-cocoa*/rgb(47, 35, 31);
+  margin: 0 10px 0 10px;
+}
+
+trough highlight {
+  background: /*mango*/rgb(209, 140, 71);
+  border: 1px solid /*mango*/rgb(209, 140, 71);
+  border-radius: 20px;
+}
+
+trough slider {
+  padding: 2px;
+  background: /*mango*/rgb(209, 140, 71);
+  border: 1px solid /*mango*/rgb(209, 140, 71);
+  border-radius: 20px;
+}
+
+.widget-volume {
+  background-color: /*dark-cocoa-05*/rgba(47, 35, 31, 0.5);
+  color: /*text*/rgb(255, 255, 255);
+  padding: 6px;
+  margin: 6px;
+  border-radius: 20px;
+}
+
+.widget-volume label {
+  padding: 0 0 0 10px;
+  font-size: 1.5rem;
+}
+
+.widget-volume button {
+  background-color: transparent;
+  box-shadow: unset;
+  padding: 0 20px 0 0;
+  border-radius: 20px;
+  color: /*mango*/rgb(209, 140, 71);
+  font-family: JetBrains Mono NerdFont;
+}
+
+.widget-volume button label {
+  font-size: 1.5rem;
+}
+
+.per-app-volume label {
+  font-size: 1rem;
+}
+
+.widget-backlight {
+  background-color: /*dark-cocoa-05*/rgba(47, 35, 31, 0.5);
+  color: /*text*/rgb(255, 255, 255);
+  padding: 6px;
+  margin: 6px;
+  border-radius: 20px;
+}
+
+.widget-backlight label {
+  padding: 0 0 0 10px;
+  font-size: 1.5rem;
+  font-family: JetBrains Mono NerdFont;
+}

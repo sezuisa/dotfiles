@@ -60,6 +60,7 @@
     ./rofi.nix
     ./lf.nix
     ./nmdm-config.nix
+    ./swaync
 
     #./wallpaper.nix
 

@@ -3,6 +3,9 @@ This is Irrennix. It builds on a so-called 'Irrenflake' - which is an abhorrent 
 
 Or in other words, I have no idea what I am doing and the more sophisticated mind will probably get an aneurism if they stare at this too long.
 
+## Theme
+This config follows a general design theme - fittingly named `Sezziato` to combine two things that define me: my username and a caffeine addiction. The theme is defined [here](theme/sezziato.md).
+
 ## Snippets
 Because why would I trust my memory to keep track of a few simple commands?
 
