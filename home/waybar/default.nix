@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 {
   programs.waybar = {
     enable = true;
@@ -6,7 +6,7 @@
     settings = {
       foo = {
         layer = "top";
-        modules-center = [ "hyprland/workspaces" "network" "pulseaudio" "battery" "clock" ];
+        modules-center = [ "hyprland/workspaces" "network" "pulseaudio" "battery" "clock" "custom/schlag-o-meter" ];
         "hyprland/workspaces" = {
           disable-scroll = true;
           all-outputs = true;
@@ -47,6 +47,24 @@
             default = [ "" ];
           };
           tooltip = false;
+        };
+        "custom/schlag-o-meter" = {
+          interval = 30;
+          tooltip-format = "Schlag-O-Meter";
+          format = "◉ {}";
+          signal = 4;
+          return-type = "json";
+          exec = pkgs.writeShellScript "fetch-data" ''
+            # fetch current counter value from server
+            count=''$(${pkgs.schlago}/bin/schlago get)
+
+            if [[ ''$count -gt 99 ]] then
+              ${pkgs.libnotify}/bin/notify-send -u critical "ATTENTION" "Schlag-O-Meter threshold has been reached";
+              echo "{\"class\": \"critical\", \"text\": \"''$count\"}";
+            else
+              echo "{\"class\": \"\", \"text\": \"''$count\"}";
+            fi
+          '';
         };
       };
     };

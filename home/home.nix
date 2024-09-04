@@ -22,6 +22,7 @@
     pistol
     file
     networkmanagerapplet
+    libnotify
 
     # apps
     signal-desktop
@@ -38,6 +39,9 @@
 
     # unstable
     pkgs-unstable.networkmanager_dmenu
+
+    # custom derivations/overlays
+    schlago
   ];
 
   home.username = "sez";

@@ -23,25 +23,38 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, treefmt-nix, foxtheme, ... }:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config = { allowUnfree = true; };
-      };
-      pkgs-unstable = import nixpkgs-unstable {
-        inherit system;
-        config = { allowUnfree = true; };
-      };
-      lib = nixpkgs.lib;
 
-      treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+      overlays = [
+        (import ./overlays/schlago.nix)
+      ];
+
+      # Convert a flake into a package set (allow unfree packages by default, and
+      # accept a list of overlay functions to apply).
+      unflake = { flake, overlays ? [ ] }: import flake {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = overlays;
+      };
+
+      # Arrange to pass the instantiated package sets into every module (via the
+      # 'specialArgs' value).
+      nixpkgs' = unflake { flake = nixpkgs; overlays = overlays; };
+      specialArgs = {
+        inherit foxtheme;
+        nixpkgs = nixpkgs';
+        pkgs-unstable = unflake { flake = nixpkgs-unstable; };
+        pkgs = nixpkgs';
+      };
+      treefmtEval = treefmt-nix.lib.evalModule specialArgs.pkgs ./treefmt.nix;
     in
     {
       formatter.${system} = treefmtEval.config.build.wrapper;
       checks.${system}.formatter = treefmtEval.config.build.check self;
 
       nixosConfigurations = {
-        irrenhost = lib.nixosSystem {
-          inherit system pkgs;
+        irrenhost = nixpkgs.lib.nixosSystem {
+          inherit system;
+          inherit specialArgs;
           modules = [
             ./configuration.nix
             ./hardware/hardware-configuration.nix
@@ -55,10 +68,7 @@
                   ./home/home.nix
                 ];
               };
-              home-manager.extraSpecialArgs = {
-                inherit pkgs-unstable;
-                inherit foxtheme;
-              };
+              home-manager.extraSpecialArgs = specialArgs;
             }
           ];
         };

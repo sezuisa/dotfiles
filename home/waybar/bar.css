@@ -51,7 +51,7 @@ tooltip {
 	border-radius: 15px;
 }
 
-#clock, #battery, #pulseaudio, #network, #workspaces {
+#clock, #battery, #pulseaudio, #network, #workspaces, #custom-schlag-o-meter {
     background-color: /*dark-cocoa-08*/rgba(47, 35, 31, 0.8);
 	padding: 5px 10px;
 	margin: 5px 0px;
@@ -64,8 +64,6 @@ tooltip {
 
 #clock {
     color: /*lavender*/rgb(196, 158, 196);
-    border-radius: 0px 15px 15px 0px;
-    margin-right: 10px;
 }
 
 #battery {
@@ -88,4 +86,15 @@ tooltip {
 
 #pulseaudio {
 	color: /*sky*/rgb(141, 169, 212);
+}
+
+#custom-schlag-o-meter {
+    color: /*mango*/rgb(209, 140, 71);
+    border-radius: 0px 15px 15px 0px;
+    margin-right: 10px;
+}
+
+#custom-schlag-o-meter.critical {
+    color: /*text*/rgb(255, 255, 255);
+    background-color: /*red*/rgb(182, 84, 82);
 }

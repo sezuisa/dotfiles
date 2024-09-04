@@ -255,6 +255,10 @@
         bindm = $mainMod, mouse:273, resizewindow
         bindm = $mainMod, ALT_L, resizewindow
 
+        # schlag-o-meter
+        bind = $mainMod,plus,exec,${pkgs.schlago}/bin/schlago incr 5
+        bind = $mainMod SHIFT,minus,exec,${pkgs.schlago}/bin/schlago reset
+
         windowrule = float,title:^(nmtui|bluetuith|Volume Control|quicknote|Calendar)$
         windowrule = center,title:^(nmtui|bluetuith|Volume Control|quicknote|Calendar)$
         windowrule = size 900 500,title:^(nmtui|bluetuith|Volume Control|quicknote)$

@@ -15,6 +15,15 @@ let
       origin = "git@github.com:rubenhoenle/docker-composer.git";
     }
     {
+      /* schlag-o-meterer */
+      name = "schlag-o-meterer";
+      path = "${gitBasePath}/quark";
+      origin = "git@github.com:sezuisa/schlag-o-meterer.git";
+      remotes = {
+        upstream = "git@github.com:rubenhoenle/schlag-o-meterer.git";
+      };
+    }
+    {
       /* golo300 dotfiles */
       name = "golo300";
       path = "${gitBasePath}/dubiose-dotfiles";
