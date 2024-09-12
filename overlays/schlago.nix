@@ -1,7 +1,3 @@
-let
-  address = "schlago.hoenle.xyz";
-  port = "23235";
-in
 final: prev: {
   # use 'final' instead of 'pkgs' in overlay for dependencies, as a general principle
   schlago = final.writeShellApplication {
@@ -12,7 +8,7 @@ final: prev: {
     text = ''
       function get(){
           # fetch current counter value from server
-          ssh -p ${port} ${address} "get"
+          ssh schlago "get"
       }
 
       function incr(){
@@ -30,7 +26,7 @@ final: prev: {
           fi
 
           # send increment request to schlag-o-meter server
-          ssh -p ${port} ${address} "incr $amount"
+          ssh schlago "incr $amount"
           # update waybar
           sleep .1
           pkill -RTMIN+4 waybar 
@@ -46,7 +42,7 @@ final: prev: {
               exit 1 
           fi
           # set counter
-          ssh -p ${port} ${address} "set $1"
+          ssh schlago "set $1"
           # update waybar
           sleep .1
           pkill -RTMIN+4 waybar 
@@ -54,7 +50,7 @@ final: prev: {
                     
       function reset(){
           # reset counter
-          ssh -p ${port} ${address} "set 0"
+          ssh schlago "set 0"
           # update waybar
           sleep .1
           pkill -RTMIN+4 waybar 

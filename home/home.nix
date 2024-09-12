@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, foxtheme, ... }:
+{ config, pkgs, pkgs-unstable, inputs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -41,7 +41,7 @@
     pkgs-unstable.networkmanager_dmenu
 
     # custom derivations/overlays
-    schlago
+    # schlago
   ];
 
   home.username = "sez";
@@ -65,6 +65,7 @@
     ./lf.nix
     ./nmdm-config.nix
     ./swaync
+    ./ssh.nix
 
     #./wallpaper.nix
 

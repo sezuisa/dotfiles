@@ -2,6 +2,28 @@
 See theme/sezziato.md for theme color definitions
 ---------------------------------------------- */
 
+@keyframes blink-warning {
+    70% {
+        color:  /*dark-cocoa*/rgb(47, 35, 31);
+    }
+
+    to {
+        color:  /*dark-cocoa*/rgb(47, 35, 31);
+        background-color: /*mango*/rgb(209, 140, 71);
+    }
+}
+
+@keyframes blink-critical {
+    70% {
+        color: /*text*/rgb(255, 255, 255);
+    }
+
+    to {
+        color: /*text*/rgb(255, 255, 255);
+        background-color: /*red*/rgb(182, 84, 82);
+    }
+}
+
 * {
     border: none;
     border-radius: 0;
@@ -68,6 +90,9 @@ tooltip {
 
 #battery {
     color: /*pistachio*/rgb(158, 196, 159);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #battery.charging {
@@ -77,6 +102,16 @@ tooltip {
 #battery.warning:not(.charging) {
     background-color: /*rose*/rgb(205, 146, 150);
     color: /*dark-cocoa*/rgb(47, 35, 31);
+}
+
+#battery.warning.discharging {
+    animation-name: blink-warning;
+    animation-duration: 3s;
+}
+
+#battery.critical.discharging {
+    animation-name: blink-critical;
+    animation-duration: 2s;
 }
 
 #network {
@@ -92,9 +127,12 @@ tooltip {
     color: /*mango*/rgb(209, 140, 71);
     border-radius: 0px 15px 15px 0px;
     margin-right: 10px;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #custom-schlag-o-meter.critical {
-    color: /*text*/rgb(255, 255, 255);
-    background-color: /*red*/rgb(182, 84, 82);
+    animation-name: blink-critical;
+    animation-duration: 2s;
 }

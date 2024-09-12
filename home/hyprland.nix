@@ -109,6 +109,10 @@
           ];
         };
       };
+      schlago-update-waybar = pkgs.writeShellScript "schlago-update.sh" ''
+        sleep .1
+        pkill -RTMIN+4 waybar 
+      '';
     in
     {
       enable = true;
@@ -256,8 +260,8 @@
         bindm = $mainMod, ALT_L, resizewindow
 
         # schlag-o-meter
-        bind = $mainMod,plus,exec,${pkgs.schlago}/bin/schlago incr 5
-        bind = $mainMod SHIFT,minus,exec,${pkgs.schlago}/bin/schlago reset
+        bind = $mainMod,plus,exec,${pkgs.openssh}/bin/ssh schlago "incr 5"; ${schlago-update-waybar}
+        bind = $mainMod SHIFT,minus,exec,${pkgs.openssh}/bin/ssh schlago "set 0"; ${schlago-update-waybar}
 
         windowrule = float,title:^(nmtui|bluetuith|Volume Control|quicknote|Calendar)$
         windowrule = center,title:^(nmtui|bluetuith|Volume Control|quicknote|Calendar)$

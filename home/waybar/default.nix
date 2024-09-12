@@ -51,12 +51,12 @@
         "custom/schlag-o-meter" = {
           interval = 30;
           tooltip-format = "Schlag-O-Meter";
-          format = "◉ {}";
+          format = " {}";
           signal = 4;
           return-type = "json";
           exec = pkgs.writeShellScript "fetch-data" ''
             # fetch current counter value from server
-            count=''$(${pkgs.schlago}/bin/schlago get)
+            count=''$(${pkgs.openssh}/bin/ssh schlago "get")
 
             if [[ ''$count -gt 99 ]] then
               ${pkgs.libnotify}/bin/notify-send -u critical "ATTENTION" "Schlag-O-Meter threshold has been reached";

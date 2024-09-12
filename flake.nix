@@ -20,7 +20,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, treefmt-nix, foxtheme, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
     let
       system = "x86_64-linux";
 
@@ -40,12 +40,12 @@
       # 'specialArgs' value).
       nixpkgs' = unflake { flake = nixpkgs; overlays = overlays; };
       specialArgs = {
-        inherit foxtheme;
+        inherit inputs;
         nixpkgs = nixpkgs';
         pkgs-unstable = unflake { flake = nixpkgs-unstable; };
         pkgs = nixpkgs';
       };
-      treefmtEval = treefmt-nix.lib.evalModule specialArgs.pkgs ./treefmt.nix;
+      treefmtEval = inputs.treefmt-nix.lib.evalModule specialArgs.pkgs ./treefmt.nix;
     in
     {
       formatter.${system} = treefmtEval.config.build.wrapper;

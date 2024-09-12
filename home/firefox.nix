@@ -1,7 +1,7 @@
-{ foxtheme, ... }:
+{ inputs, ... }:
 
 {
-  home.file.".mozilla/firefox/sez/chrome".source = foxtheme;
+  home.file.".mozilla/firefox/sez/chrome".source = inputs.foxtheme;
   programs.firefox = {
     enable = true;
     profiles.sez = {
