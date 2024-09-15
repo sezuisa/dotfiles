@@ -38,6 +38,18 @@ sudo fprintd-enroll sez
 sudo fprintd-verify sez
 ```
 
+### agenix
+``` bash
+# make sure to be in secrets directory
+cd secrets
+
+# create/edit secrets file
+agenix -e <file>
+
+# Re-key files, use if public keys have been changed
+agenix -r
+```
+
 ## Troubleshooting
 It is the number one law of software that things break and go wrong. This might prevent some future mild annoyance.
 
