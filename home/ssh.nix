@@ -13,7 +13,7 @@
       };
       schlago-pi = {
         host = "schlago-pi";
-        hostname = "irrenpi.sarah.haegele.vpn.sfz-aalen.space";
+        hostname = "pi.sezuisa.me";
         port = 23235;
         user = "sez";
         identityFile = [

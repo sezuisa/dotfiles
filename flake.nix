@@ -8,6 +8,10 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # formatter for *.nix files
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
@@ -59,6 +63,7 @@
             ./configuration.nix
             ./hardware/hardware-configuration.nix
             ./modules
+            inputs.agenix.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
