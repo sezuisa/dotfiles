@@ -11,6 +11,15 @@
           "~/.ssh/schlag-o-meter/id_ed25519"
         ];
       };
+      schlago-pi = {
+        host = "schlago-pi";
+        hostname = "irrenpi.sarah.haegele.vpn.sfz-aalen.space";
+        port = 23235;
+        user = "sez";
+        identityFile = [
+          "~/.ssh/schlag-o-meter/id_ed25519"
+        ];
+      };
     };
   };
 }

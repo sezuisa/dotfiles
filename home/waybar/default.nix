@@ -56,7 +56,7 @@
           return-type = "json";
           exec = pkgs.writeShellScript "fetch-data" ''
             # fetch current counter value from server
-            count=''$(${pkgs.openssh}/bin/ssh schlago "get")
+            count=''$(${pkgs.openssh}/bin/ssh schlago-pi "get")
 
             if [[ ''$count -gt 99 ]] then
               ${pkgs.libnotify}/bin/notify-send -u critical "ATTENTION" "Schlag-O-Meter threshold has been reached";

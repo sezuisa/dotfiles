@@ -260,8 +260,9 @@
         bindm = $mainMod, ALT_L, resizewindow
 
         # schlag-o-meter
-        bind = $mainMod,plus,exec,${pkgs.openssh}/bin/ssh schlago "incr 5"; ${schlago-update-waybar}
-        bind = $mainMod SHIFT,minus,exec,${pkgs.openssh}/bin/ssh schlago "set 0"; ${schlago-update-waybar}
+        bind = $mainMod,U,exec,${schlago-update-waybar}
+        bind = $mainMod,plus,exec,${pkgs.openssh}/bin/ssh schlago-pi "incr 5"; ${schlago-update-waybar}
+        bind = $mainMod SHIFT,minus,exec,${pkgs.openssh}/bin/ssh schlago-pi "set 0"; ${schlago-update-waybar}
 
         windowrule = float,title:^(nmtui|bluetuith|Volume Control|quicknote|Calendar)$
         windowrule = center,title:^(nmtui|bluetuith|Volume Control|quicknote|Calendar)$

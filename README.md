@@ -38,23 +38,6 @@ sudo fprintd-enroll sez
 sudo fprintd-verify sez
 ```
 
-### Schlago
-With `schlago`, you can comfortably query and set an integer value from a defined ssh server that has the corresponding [`schlag-o-meterer`](https://github.com/rubenhoenle/schlag-o-meterer) backend running. Together with the fitting waybar module `schlag-o-meter` (that you can also find in this config), this creates a fun little persistent waybar-counter that will remind you when a certain threshold is met.
-
-```bash
-# fetch current counter value
-schlago [get]
-
-# increment value (default by 1 when no argument is provided)
-schlago incr [value]
-
-# set value to a specific target value
-schlago set <value>
-
-# reset the counter to 0
-schlago reset
-```
-
 ## Troubleshooting
 It is the number one law of software that things break and go wrong. This might prevent some future mild annoyance.
 

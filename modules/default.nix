@@ -6,5 +6,6 @@
     ./hyprland.nix
     ./network.nix
     ./fingerprint.nix
+    ./tailscale.nix
   ];
 }
