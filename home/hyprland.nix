@@ -1,56 +1,5 @@
 { config, pkgs, pkgs-unstable, lib, inputs, ... }:
 {
-
-  gtk = {
-    enable = true;
-    cursorTheme.package = pkgs.bibata-cursors;
-    cursorTheme.name = "Bibata-Modern-Ice";
-
-    theme.name = "catppuccin-mocha-peach-standard+black";
-    theme.package = pkgs.catppuccin-gtk.override {
-      accents = [ "peach" ];
-      size = "standard";
-      tweaks = [ "black" ];
-      variant = "mocha";
-    };
-
-    gtk2.extraConfig = "gtk-application-prefer-dark-theme = 1";
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-  };
-
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
-  };
-
-  xdg.configFile = {
-    "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
-    "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
-    "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
-  };
-
-  xdg.dataFile."config-assets/nixos.jpg".source = ../assets/nixos.jpg;
-  programs.swaylock = {
-    enable = true;
-    settings = {
-      color = "000000";
-      font-size = 24;
-      indicator-idle-visible = false;
-      indicator-radius = 60;
-      inside-color = "000000";
-      key-hl-color = "87c1cf";
-      ring-color = "6081ac";
-      show-failed-attempts = false;
-      image = "${config.home.homeDirectory}/.local/share/config-assets/nixos.jpg";
-    };
-  };
-
   wayland.windowManager.hyprland =
     let
       # to get the hash when adding a new wallpaper, just use 'sha256="";', do a rebuild an use the hash from the error message

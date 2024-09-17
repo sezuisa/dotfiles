@@ -1,9 +1,8 @@
 { pkgs, ... }:
 {
   programs.hyprland.enable = true;
-  # hyprland complains now that wlr and hyprland portal are active at the same time
-  # xdg.portal.wlr.enable = true;
   security = {
+    polkit.enable = true;
     rtkit.enable = true;
     pam.services.swaylock = {
       text = ''
@@ -26,18 +25,5 @@
         wayland = true;
       };
     };
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      pulse.enable = true;
-    };
-    dbus.enable = true;
-    gvfs.enable = true;
-    tumbler.enable = true;
-    gnome = {
-      #sushi.enable = true;
-      gnome-keyring.enable = true;
-    };
   };
-
 }

@@ -5,10 +5,10 @@
     # gnome
     evince # gnome pdf reader
     gnome.eog # gnome image viewer
+    gnome.gnome-calendar
 
     # development
     python3
-    neovim
     arduino
     nodejs_22
 
@@ -23,6 +23,7 @@
     file
     networkmanagerapplet
     libnotify
+    bluetuith
 
     # apps
     signal-desktop
@@ -32,7 +33,6 @@
     keepassxc
     darktable
     inkscape
-    nuclear
     bruno
     prusa-slicer
     protonmail-desktop
@@ -58,16 +58,16 @@
     ./vscodium.nix
     ./git.nix
     ./firefox.nix
-
     ./waybar
     ./hyprland.nix
+    ./swaylock.nix
     ./rofi.nix
     ./lf.nix
     ./nmdm-config.nix
     ./swaync
     ./ssh.nix
-
-    #./wallpaper.nix
+    ./gtk.nix
+    ./neovim.nix
 
     ./default-applications.nix
   ];

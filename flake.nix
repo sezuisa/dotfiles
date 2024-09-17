@@ -60,7 +60,6 @@
           inherit system;
           inherit specialArgs;
           modules = [
-            ./configuration.nix
             ./hardware/hardware-configuration.nix
             ./modules
             inputs.agenix.nixosModules.default

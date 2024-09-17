@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   programs.zsh = {
     enable = true;
@@ -9,9 +8,9 @@
       ff = "fastfetch";
 
       # nixos update commands
-      update = "git add -N; sudo nixos-rebuild switch --flake .#";
-      update-boot = "git add -N; sudo nixos-rebuild boot --flake .#";
-      update-test = "git add -N; sudo nixos-rebuild test --flake .#";
+      update = "sudo nixos-rebuild switch --flake .#";
+      update-boot = "sudo nixos-rebuild boot --flake .#";
+      update-test = "sudo nixos-rebuild test --flake .#";
 
       # other stuff
       hibernate = "systemctl hibernate";
