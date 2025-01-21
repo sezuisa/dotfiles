@@ -2,8 +2,8 @@
 {
   gtk = {
     enable = true;
-    cursorTheme.package = pkgs.bibata-cursors;
-    cursorTheme.name = "Bibata-Modern-Ice";
+    cursorTheme.package = pkgs.whitesur-cursors;
+    cursorTheme.name = "WhiteSur-cursors";
 
     theme.name = "catppuccin-mocha-peach-standard+black";
     theme.package = pkgs.catppuccin-gtk.override {

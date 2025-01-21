@@ -4,8 +4,8 @@
   home.packages = with pkgs; [
     # gnome
     evince # gnome pdf reader
-    gnome.eog # gnome image viewer
-    gnome.gnome-calendar
+    eog # gnome image viewer
+    gnome-calendar
 
     # development
     python3

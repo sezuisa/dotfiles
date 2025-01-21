@@ -95,6 +95,7 @@
         gestures = {
           workspace_swipe = true;
         };
+        env = [ "XCURSOR_SIZE, 30" ];
         misc = {
           disable_hyprland_logo = true;
           force_default_wallpaper = 0; # Set to 0 to disable the anime mascot wallpapers
@@ -149,6 +150,7 @@
         ) submaps)}
 
         exec-once = ${pkgs.swaybg}/bin/swaybg --image ${wallpaper}
+        exec-once = hyprctl setcursor WhiteSur-cursors 30
 
         # lock screen on lid close
         bindl = ,switch:Lid Switch,exec,${pkgs.swaylock}/bin/swaylock
