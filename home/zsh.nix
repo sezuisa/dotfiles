@@ -17,7 +17,7 @@
     };
     enableCompletion = true;
 
-    initExtra = ''
+    initContent = ''
       fastfetch
     '';
 
