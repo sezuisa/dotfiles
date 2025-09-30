@@ -1,3 +1,5 @@
+{ config, ... }:
+
 {
   xdg.mimeApps = {
     enable = true;
@@ -18,4 +20,5 @@
       "image/jpeg" = "org.gnome.eog.desktop";
     };
   };
+  xdg.configFile."mimeapps.list".force = true;
 }

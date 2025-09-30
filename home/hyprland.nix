@@ -101,7 +101,8 @@
           force_default_wallpaper = 0; # Set to 0 to disable the anime mascot wallpapers
         };
         # highres and scaling 1 is important to fix wayland scaling issues
-        monitor = ",highres,auto,1";
+        monitor = ",highres,auto,1
+        ";
       };
       extraConfig = ''
         # focus

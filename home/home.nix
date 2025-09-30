@@ -52,6 +52,7 @@
   programs.bash.enable = true;
 
   imports = [
+    inputs.textfox.homeManagerModules.default
     ./clonerer.nix
     ./zsh.nix
     ./kitty.nix

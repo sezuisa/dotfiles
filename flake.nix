@@ -22,6 +22,9 @@
       url = "github:sezuisa/whatthefox";
       flake = false;
     };
+    textfox = {
+      url = "github:adriankarlen/textfox";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
@@ -73,6 +76,7 @@
                 ];
               };
               home-manager.extraSpecialArgs = specialArgs;
+              home-manager.backupFileExtension = "homemanager-backup";
             }
           ];
         };
